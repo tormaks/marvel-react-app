@@ -14,7 +14,6 @@
    &__img {
       width: 180px;
       height: 180px;
-      object-fit: cover;
    }
    &__info {
       display: grid;
@@ -27,6 +26,10 @@
       font-size: 22px;
       line-height: 29px;
       text-transform: uppercase;
+      max-width: 270px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
    }
    &__descr {
       font-size: 14px;

@@ -4,6 +4,8 @@ import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
 
+import decoration from '../../resources/img/vision.png';
+
 class App extends Component {
 
    state = {
@@ -26,6 +28,7 @@ class App extends Component {
                   <CharList onCharSelected={this.onCharSelected}/>
                   <CharInfo charId={this.state.selectedChar}/>
                </div>
+               <img className="bg-decoration" src={decoration} alt="vision" />
             </main>
          </div>
       )

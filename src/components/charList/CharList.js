@@ -17,6 +17,8 @@ class CharList extends Component {
       charsEnded: false,
    }
 
+   refItems = [];
+
    marvelService = new MarvelService();
 
    componentDidMount() {
@@ -27,7 +29,7 @@ class CharList extends Component {
    componentWillUnmount() {
       window.removeEventListener('scroll', this.loadingCharsByScroll);
    }
-
+ 
    loadingCharsByScroll = () => {
       if ((window.scrollY + document.documentElement.clientHeight >= document.documentElement.scrollHeight) && (document.documentElement.scrollHeight >= 1614)) {
          this.onRequest(this.state.offset);
@@ -67,8 +69,16 @@ class CharList extends Component {
       }))
    }
 
+   setRef = (ref) => {
+      this.refItems.push(ref);
+   }
+
+   focusChar = (i) => {
+      this.refItems[i].focus();
+   }
+
    renderItems = (chars) => {
-      const items = chars.map(item => {
+      const items = chars.map((item, i) => {
          const {thumbnail, name, id} = item;
 
          let objectFit = {objectFit: 'cover'};
@@ -78,9 +88,20 @@ class CharList extends Component {
          }
          
          return (
-            <li className="char__item" 
+            <li className='char__item'
+               tabIndex={0}
+               ref={this.setRef}
                key={id}
-               onClick={() => this.props.onCharSelected(id)}>
+               onClick={() => {
+                  this.props.onCharSelected(id);
+                  this.focusChar(i);
+               }}
+               onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                     this.props.onCharSelected(id);
+                     this.focusChar(i);
+                  }
+               }}>
                <img style={objectFit} src={thumbnail} alt="abyss"/>
                <div className="char__name">{name}</div>
             </li>

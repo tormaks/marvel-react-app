@@ -2,56 +2,39 @@ import './charList.scss';
 import {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
 const CharList = (props) => {
 
    const [chars, setChars] = useState([]);
-   const [error, setError] = useState(false);
-   const [loading, setLoading] = useState(true);
    const [newCharactersLoading, setNewCharactersLoading] = useState(false);
    const [offset, setOffset] = useState(210);
    const [charsEnded, setCharsEnded] = useState(false);
 
    const refItems = useRef([]);
 
-   const marvelService = new MarvelService();
+   const {loading, error, getAllCharacters} = useMarvelService();
 
    useEffect(() => {
-      onRequest();
-      // window.addEventListener('scroll', loadingCharsByScroll);
+      onRequest(offset, true);
    }, [])
- 
-   // const loadingCharsByScroll = () => {
-   //    if ((window.scrollY + document.documentElement.clientHeight >= document.documentElement.scrollHeight) && (document.documentElement.scrollHeight >= 1614)) {
-   //       onRequest(offset);
-   //    }
-   // }
 
-   const onRequest = (offset) => {
-      onLoadingCharacters();
-      marvelService.getAllCharacters(offset)
-         .then(onLoadedCharacters)
-         .catch(onError);
-   }
-
-   const onError = () => {
-      setError(true);
-      setLoading(false);
-   }
-
-   const onLoadingCharacters = () => {
-      setNewCharactersLoading(true);
+   const onRequest = (offset, initial) => {
+      initial ? setNewCharactersLoading(false) : setNewCharactersLoading(true);
+      console.log(initial);
+      getAllCharacters(offset)
+         .then(onLoadedCharacters);
    }
 
    const onLoadedCharacters = newChars => {
-      let ended = marvelService._total - offset <= 9;
+      let ended = false;
+      if (newChars.length < 9) {
+         ended = true;
+      }
 
       setChars(chars => [...chars, ...newChars]);
-      setLoading(false);
-      setError(false);
       setNewCharactersLoading(false);
       setOffset(offset => offset + 9);
       setCharsEnded(ended);
@@ -70,7 +53,7 @@ const CharList = (props) => {
          if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
             objectFit = {objectFit: 'contain'};
          }
-         
+
          return (
             <li className='char__item'
                tabIndex={0}
@@ -91,7 +74,7 @@ const CharList = (props) => {
             </li>
          )
       })
-      
+
       return (
          <ul className="char__grid">
             {items}
@@ -102,14 +85,13 @@ const CharList = (props) => {
    const items = renderItems(chars);
 
    const errorMessage = error ? <ErrorMessage/> : null;
-   const spinner = loading ? <Spinner/> : null;
-   const content = !(spinner || errorMessage) ? items : null;
+   const spinner = loading && !newCharactersLoading ? <Spinner/> : null;
 
    return (
       <div className="char__list">
          {errorMessage}
          {spinner}
-         {content}
+         {items}
          <button
             className="button button__main button__long"
             disabled={newCharactersLoading}

@@ -23,7 +23,6 @@ const CharList = (props) => {
 
    const onRequest = (offset, initial) => {
       initial ? setNewCharactersLoading(false) : setNewCharactersLoading(true);
-      console.log(initial);
       getAllCharacters(offset)
          .then(onLoadedCharacters);
    }

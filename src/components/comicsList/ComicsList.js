@@ -42,7 +42,7 @@ const ComicsList = () => {
       const items = comics.map((item, i) => {
          return (
              <li key={i} className="comics__item">
-                <Link to={`./${item.id}`}>
+                <Link to={`${item.id}`}>
                    <img src={item.thumbnail} alt="ultimate war" className="comics__item-img"/>
                    <div className="comics__item-name">{item.title}</div>
                    <div className="comics__item-price">{item.price}</div>

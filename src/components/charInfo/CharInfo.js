@@ -7,6 +7,7 @@ import Skeleton from '../skeleton/Skeleton';
 import useMarvelService from '../../services/MarvelService';
 
 import './charInfo.scss';
+import {NavLink} from 'react-router-dom';
 
 const CharInfo = (props) => {
    const [char, setChar] = useState(null);
@@ -78,10 +79,14 @@ const View = ({char}) => {
             {comics.length > 0 ? null : 'There are no comics featuring this character.'}
             {
                comics.map((item, i) => {
+                  const comicId = item.resourceURI.match(/\/(\d+)/)[1];
                   while (i < 10) {
                      return (
                         <li key={i} className="char__comics-item">
-                           {item.name}
+                           <NavLink
+                               end
+                               to={`/comics/${comicId}`}>{item.name}
+                           </NavLink>
                         </li>
                      )
                   }

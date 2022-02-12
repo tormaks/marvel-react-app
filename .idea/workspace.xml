@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b51dd450-9567-43ce-afa2-b111480e09f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/pages/SingleComicPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/app/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/appHeader/AppHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/appHeader/AppHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/charInfo/CharInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charInfo/CharInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/charInfo/charInfo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/charInfo/charInfo.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/comicsList/ComicsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comicsList/ComicsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/MarvelService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/MarvelService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/404.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/404.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/singleComic/SingleComic.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/singleComic/singleComic.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/singleComicPage.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +52,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/pages" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +70,7 @@
       <workItem from="1644136298858" duration="8000" />
       <workItem from="1644311940148" duration="11989000" />
       <workItem from="1644347176331" duration="3789000" />
-      <workItem from="1644418414077" duration="24947000" />
+      <workItem from="1644418414077" duration="31754000" />
     </task>
     <servers />
   </component>
